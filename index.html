@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<title>LIFE · 2026 CALENDAR</title>
+<title>LIFE · 2026 YEAR BOARD</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Chewy&display=swap" rel="stylesheet">
 <style>
 /* =========================================================
    MODERN LIFE / CALENDAR DESIGN SYSTEM
@@ -50,9 +50,9 @@
   --st-skip-text: #5a5f6b;
 
   /* Fonts */
-  --font-display: "Archivo Black", "Space Grotesk", sans-serif;
-  --font-subhead: "Space Grotesk", sans-serif;
-  --font-mono: "Space Mono", monospace;
+  --font-display: "Chewy", "Baloo 2", cursive;
+  --font-subhead: "Baloo 2", sans-serif;
+  --font-mono: "Baloo 2", sans-serif;
 }
 
 [data-theme="dark"] {
@@ -81,6 +81,15 @@
   --st-gametime-text: #000000;
   --st-skip-bg: #232a3b;
   --st-skip-text: #64748b;
+}
+
+/* Playful board-game typography */
+h1, h2, h3, .hero-title, .section-title, .event-title, .stat-card .val, .nav-tile-title {
+  letter-spacing: .015em;
+  font-weight: 700;
+}
+button, select, .status-pill, .event-date, .category-chip {
+  letter-spacing: .025em;
 }
 
 * { box-sizing: border-box; }
@@ -638,6 +647,109 @@ select.status-select.st-skip { background-color: var(--st-skip-bg); color: var(-
   background: var(--bg-card); border: 2px dashed var(--ink); color: var(--ink);
 }
 
+/* ---------- REST OF YEAR ANALYSIS ---------- */
+.year-analysis-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 18px;
+}
+.month-analysis-card {
+  background: var(--bg-subtle);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 15px 16px;
+}
+.month-analysis-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.month-analysis-name {
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.month-analysis-badge {
+  flex: 0 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.month-analysis-badge.packed { background: #ead7d7; color: #7b3d3d; }
+.month-analysis-badge.active { background: #eee1c8; color: #775b21; }
+.month-analysis-badge.open { background: #dce8dc; color: #3e6247; }
+.month-analysis-badge.light { background: #e1e6eb; color: #52606d; }
+
+[data-theme="dark"] .month-analysis-badge.packed { background:#3a2528; color:#f1b7bd; }
+[data-theme="dark"] .month-analysis-badge.active { background:#3b3322; color:#ead49b; }
+[data-theme="dark"] .month-analysis-badge.open { background:#213327; color:#a8d7b3; }
+[data-theme="dark"] .month-analysis-badge.light { background:#252d35; color:#bdc8d2; }
+
+.month-analysis-summary {
+  font-family: var(--font-subhead);
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.month-analysis-events {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.month-analysis-chip {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+}
+.month-analysis-meta {
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px dashed var(--border-subtle);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+}
+.next-move-box {
+  margin-top: 16px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.next-move-kicker {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 5px;
+}
+.next-move-text {
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
 /* ---------- CALENDAR VIEW ---------- */
 .calendar-shell {
   background: var(--bg-card); border: 3px solid var(--ink); padding: 14px;
@@ -761,9 +873,9 @@ select.status-select.st-skip { background-color: var(--st-skip-bg); color: var(-
   --st-skip-bg: #e7e5e1;
   --st-skip-text: #6f7479;
 
-  --font-display: "Manrope", "DM Sans", system-ui, sans-serif;
-  --font-subhead: "DM Sans", system-ui, sans-serif;
-  --font-mono: "DM Sans", system-ui, sans-serif;
+  --font-display: "Chewy", "Baloo 2", cursive;
+  --font-subhead: "Baloo 2", sans-serif;
+  --font-mono: "Baloo 2", sans-serif;
 }
 
 [data-theme="dark"] {
@@ -1062,29 +1174,580 @@ h1.hero-title:hover { transform: none; text-shadow: none; color: var(--accent-ma
   .calendar-day { min-height: 76px; }
 }
 
+
+/* =========================================================
+   LIFE BOARD-GAME INSPIRED VISUAL SYSTEM
+   playful road-trip board aesthetic, not rave / nightlife
+   ========================================================= */
+:root {
+  --life-cream: #fff8ec;
+  --life-paper: #fffdf7;
+  --life-ink: #24323b;
+  --life-ink-soft: #64727c;
+  --life-teal: #59b7ad;
+  --life-blue: #6ea6d9;
+  --life-yellow: #f2c85b;
+  --life-orange: #e9995a;
+  --life-coral: #e77f79;
+  --life-pink: #d78aaa;
+  --life-green: #83b879;
+  --life-purple: #9b8fc2;
+  --life-road: #d9d2c5;
+  --life-border: #cfc7ba;
+
+  --bg: var(--life-cream);
+  --bg-card: var(--life-paper);
+  --bg-subtle: #f4efe5;
+  --ink: var(--life-ink);
+  --ink-muted: var(--life-ink-soft);
+  --border: var(--life-border);
+  --border-subtle: #ddd6ca;
+  --accent-main: var(--life-teal);
+  --accent-pop: var(--life-coral);
+  --card-shadow: 0 8px 24px rgba(76, 64, 47, .08);
+  --button-hover: #f6e7b4;
+
+  --st-locked-bg: #dcebd7;
+  --st-locked-text: #36533a;
+  --st-likely-bg: #dcecf5;
+  --st-likely-text: #35566b;
+  --st-choosing-bg: #f8e9bc;
+  --st-choosing-text: #745d22;
+  --st-gametime-bg: #f1ddd2;
+  --st-gametime-text: #785341;
+  --st-skip-bg: #e9e5df;
+  --st-skip-text: #77716a;
+
+  --font-display: "Chewy", "Baloo 2", cursive;
+  --font-subhead: "Baloo 2", sans-serif;
+  --font-mono: "Baloo 2", sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg: #172028;
+  --bg-card: #202b34;
+  --bg-subtle: #28343d;
+  --ink: #f6f1e8;
+  --ink-muted: #b7c0c7;
+  --border: #46545e;
+  --border-subtle: #3a4852;
+  --accent-main: #7dc8bd;
+  --accent-pop: #ef958c;
+  --card-shadow: 0 10px 28px rgba(0,0,0,.18);
+  --button-hover: #4e5b45;
+}
+
+body {
+  background:
+    radial-gradient(circle at 14% 9%, rgba(242,200,91,.16), transparent 18%),
+    radial-gradient(circle at 90% 15%, rgba(89,183,173,.12), transparent 20%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+.wrap { max-width: 880px; padding-bottom: 70px; }
+
+.topbar {
+  border-bottom: 0;
+  margin-top: 10px;
+  background: rgba(255,255,255,.42);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 9px 12px 9px 16px;
+}
+[data-theme="dark"] .topbar { background: rgba(32,43,52,.82); }
+
+.topbar .stamp {
+  background: transparent;
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: .12em;
+  padding: 0;
+}
+button.theme-toggle {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: none;
+  background: var(--bg-card);
+  padding: 7px 12px;
+}
+button.theme-toggle:hover { background: var(--life-yellow); }
+
+header.hero { padding: 28px 4px 18px; }
+.life-brand-lockup { display:flex; align-items:center; gap:16px; }
+h1.hero-title {
+  font-size: clamp(44px, 9vw, 74px);
+  text-transform: none;
+  letter-spacing: -.065em;
+  text-shadow: none;
+  font-weight: 800;
+  line-height: .86;
+}
+.hero-subtitle {
+  margin-top: 9px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .19em;
+  color: var(--ink-muted);
+}
+.life-wheel {
+  width: 58px; height: 58px; border-radius:50%;
+  position:relative; flex:0 0 auto;
+  background: conic-gradient(
+    var(--life-teal) 0 60deg,
+    var(--life-yellow) 60deg 120deg,
+    var(--life-coral) 120deg 180deg,
+    var(--life-blue) 180deg 240deg,
+    var(--life-green) 240deg 300deg,
+    var(--life-pink) 300deg 360deg
+  );
+  border: 4px solid var(--bg-card);
+  box-shadow: 0 0 0 1px var(--border), 0 6px 18px rgba(0,0,0,.08);
+}
+.life-wheel:after {
+  content:""; position:absolute; inset:19px; border-radius:50%;
+  background:var(--bg-card); border:1px solid var(--border);
+}
+.life-wheel span { display:none; }
+
+.tabbar-outer {
+  background: transparent;
+  border-bottom: 0;
+  top: 6px;
+  padding: 4px 0 12px;
+}
+.tabbar {
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px;
+  gap: 3px;
+}
+[data-theme="dark"] .tabbar { background: rgba(32,43,52,.90); }
+.tab {
+  border:0; box-shadow:none; border-radius:999px;
+  background:transparent; font-size:10px; padding:9px 12px;
+}
+.tab[aria-selected="true"] {
+  background: var(--life-teal); color:#173430;
+  border:0; box-shadow:none; transform:none;
+}
+.tab:hover { background:#f4e9ce; }
+
+.home-intro {
+  margin: 8px 0 18px;
+  padding: 18px 2px 8px;
+}
+.home-eyebrow {
+  font-size:10px; font-weight:800; letter-spacing:.16em;
+  color:var(--life-teal); margin-bottom:8px;
+}
+.home-intro h2 {
+  font-family:var(--font-display); font-size:clamp(30px,6vw,48px);
+  line-height:1.02; letter-spacing:-.045em; margin:0 0 10px;
+}
+.home-intro p { max-width:600px; margin:0; color:var(--ink-muted); font-size:14px; }
+
+.life-road {
+  height: 44px; margin: 2px 18px 18px; position:relative;
+}
+.life-road:before {
+  content:""; position:absolute; left:0; right:0; top:21px; height:7px;
+  border-radius:999px;
+  background: repeating-linear-gradient(90deg,
+    var(--life-teal) 0 42px,
+    var(--life-yellow) 42px 84px,
+    var(--life-coral) 84px 126px,
+    var(--life-blue) 126px 168px,
+    var(--life-green) 168px 210px
+  );
+  opacity:.78;
+}
+.road-dot {
+  position:absolute; width:18px; height:18px; top:15px; border-radius:50%;
+  background:var(--bg-card); border:4px solid var(--life-ink); z-index:2;
+}
+.dot-a{left:2%}.dot-b{left:26%}.dot-c{left:49%}.dot-d{left:73%}.dot-e{right:2%}
+
+.landing-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+@media(max-width:620px){ .landing-grid{grid-template-columns:1fr;} }
+
+.nav-tile {
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  padding:20px;
+  box-shadow:var(--card-shadow);
+  min-height:150px;
+  position:relative;
+  display:grid;
+  grid-template-columns:44px 1fr auto;
+  align-items:start;
+  gap:12px;
+}
+.nav-tile:hover { transform: translateY(-2px); box-shadow:0 12px 28px rgba(76,64,47,.12); }
+.nav-tile:active { transform:translateY(0); box-shadow:var(--card-shadow); }
+.nav-icon {
+  width:40px; height:40px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:900; font-size:18px; color:#24323b;
+}
+.tile-1 .nav-icon{background:#cfe8e2}
+.tile-2 .nav-icon{background:#f6df9c}
+.tile-3 .nav-icon{background:#e8ced8}
+.tile-4 .nav-icon{background:#d9e4f0}
+.nav-tile-title { font-size:21px; text-transform:none; letter-spacing:-.02em; }
+.nav-tile-sub { font-family:var(--font-subhead); font-size:12px; line-height:1.4; }
+.nav-tile-arrow {
+  font-size:9px; letter-spacing:.08em; border:1px solid var(--border);
+  border-radius:999px; padding:5px 7px; background:var(--bg-card);
+}
+.nav-tile.tile-1, .nav-tile.tile-2, .nav-tile.tile-3, .nav-tile.tile-4 {
+  border-color:var(--border);
+  box-shadow:var(--card-shadow);
+}
+.nav-tile.tile-1{background:#f6fbf8}
+.nav-tile.tile-2{background:#fffaf0}
+.nav-tile.tile-3{background:#fff7fa}
+.nav-tile.tile-4{background:#f6f9fc}
+[data-theme="dark"] .nav-tile.tile-1,
+[data-theme="dark"] .nav-tile.tile-2,
+[data-theme="dark"] .nav-tile.tile-3,
+[data-theme="dark"] .nav-tile.tile-4 { background:var(--bg-card); border-color:var(--border); box-shadow:var(--card-shadow); }
+
+.section-title {
+  font-size:clamp(28px,5vw,38px);
+  text-transform:none;
+  letter-spacing:-.045em;
+}
+.section-note { font-family:var(--font-subhead); font-size:13px; }
+
+.event-card, .date-group-card, .damage-container, .calendar-shell, .add-show-card {
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  box-shadow:var(--card-shadow);
+}
+.event-card { padding:16px 17px; }
+.event-title { text-transform:none; letter-spacing:-.02em; }
+.event-date { border-radius:999px; padding:4px 8px; background:#e7ede9; color:#40514c; }
+.tag-badge { border:0; border-radius:999px; padding:5px 9px; }
+.tag-badge.music { background:#e7dff0; color:#5d4a78; }
+.tag-badge.social { background:#f6e8c6; color:#785c1f; }
+.tag-badge.family { background:#f2dce1; color:#7d4a57; }
+.tag-badge.trip { background:#dbe6f4; color:#3f6282; }
+.tag-badge.outdoors { background:#dfeada; color:#456641; }
+.tag-badge.culture { background:#e8e0ef; color:#624e77; }
+.tag-badge.sports { background:#f3ddca; color:#7a5534; }
+.tag-badge.wellness { background:#dcebed; color:#38666c; }
+.tag-badge.wedding { background:#f4dbdd; color:#82494e; }
+.tag-badge.holiday { background:#e7eadc; color:#566340; }
+
+select.status-select {
+  border:1px solid var(--border); border-radius:999px; box-shadow:none;
+}
+.btn-add-show, .btn-submit {
+  border:1px solid var(--border); border-radius:999px; box-shadow:none;
+  background:var(--life-teal);
+}
+.btn-add-show:hover, .btn-submit:hover:not(:disabled) { background:#7bc8bd; transform:none; box-shadow:none; }
+.btn-cancel { border-radius:999px; border:1px solid var(--border); }
+
+.damage-container {
+  background:linear-gradient(145deg, rgba(255,255,255,.72), rgba(246,240,229,.84));
+}
+[data-theme="dark"] .damage-container { background:var(--bg-card); }
+.damage-title { text-transform:none; letter-spacing:-.045em; }
+.vibe-box {
+  border:0; border-radius:16px; box-shadow:none;
+  background:linear-gradient(135deg,#d7ebe5,#e6edf6);
+}
+[data-theme="dark"] .vibe-box { background:#30404b; color:var(--ink); }
+
+.month-analysis-card, .next-move-box {
+  border:1px solid var(--border); border-radius:16px;
+}
+
+/* YEAR AHEAD */
+.ahead-hero {
+  display:flex; justify-content:space-between; align-items:center;
+  gap:20px; margin:8px 0 18px;
+}
+.ahead-kicker {
+  font-size:10px; font-weight:800; letter-spacing:.16em;
+  color:var(--life-coral); margin-bottom:5px;
+}
+.mini-spinner {
+  width:74px; height:74px; flex:0 0 auto; border-radius:50%;
+  background:conic-gradient(
+    var(--life-teal) 0 51deg,
+    var(--life-yellow) 51deg 103deg,
+    var(--life-coral) 103deg 154deg,
+    var(--life-blue) 154deg 206deg,
+    var(--life-green) 206deg 257deg,
+    var(--life-pink) 257deg 309deg,
+    var(--life-purple) 309deg 360deg
+  );
+  display:grid; place-items:center;
+  box-shadow:0 8px 22px rgba(0,0,0,.09);
+  border:4px solid var(--bg-card);
+  outline:1px solid var(--border);
+}
+.spinner-center {
+  width:36px; height:36px; border-radius:50%; display:grid; place-items:center;
+  background:var(--bg-card); color:var(--ink); font-size:9px; font-weight:800;
+  border:1px solid var(--border);
+}
+.ahead-stats {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:15px;
+}
+@media(max-width:620px){ .ahead-stats{grid-template-columns:1fr 1fr;} }
+.ahead-stat {
+  border:1px solid var(--border); border-radius:14px; background:var(--bg-card);
+  padding:13px;
+}
+.ahead-stat .num { font-family:var(--font-display); font-size:25px; font-weight:800; }
+.ahead-stat .lab { font-size:9px; font-weight:800; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.08em; }
+
+.ahead-legend {
+  display:flex; flex-wrap:wrap; gap:14px; align-items:center;
+  font-size:10px; font-weight:700; color:var(--ink-muted); margin:12px 0 20px;
+}
+.legend-pill { display:inline-block; width:18px; height:8px; border-radius:999px; margin-right:5px; }
+.legend-pill.selected{background:var(--life-green)}
+.legend-pill.likely{background:var(--life-blue)}
+.legend-pill.decision{background:var(--life-yellow)}
+
+.year-roadmap { position:relative; padding:4px 0 4px 22px; }
+.year-roadmap:before {
+  content:""; position:absolute; left:8px; top:5px; bottom:5px; width:5px;
+  border-radius:999px;
+  background:linear-gradient(var(--life-teal),var(--life-yellow),var(--life-coral),var(--life-blue),var(--life-green));
+}
+.ahead-month {
+  position:relative; margin-bottom:18px;
+  border:1px solid var(--border); border-radius:18px;
+  background:var(--bg-card); padding:16px;
+  box-shadow:var(--card-shadow);
+}
+.ahead-month:before {
+  content:""; position:absolute; left:-22px; top:24px; width:15px; height:15px;
+  border-radius:50%; background:var(--month-color,var(--life-teal));
+  border:3px solid var(--bg);
+}
+.ahead-month-header { display:flex; justify-content:space-between; gap:10px; align-items:center; margin-bottom:10px; }
+.ahead-month-name { font-family:var(--font-display); font-size:22px; font-weight:800; }
+.ahead-month-count { font-size:9px; font-weight:800; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.08em; }
+
+.ahead-event {
+  display:grid; grid-template-columns:58px 1fr auto;
+  gap:10px; align-items:start; padding:10px 0; border-top:1px solid var(--border-subtle);
+}
+.ahead-event:first-of-type { border-top:0; }
+.ahead-event-date { font-size:10px; font-weight:800; color:var(--ink-muted); }
+.ahead-event-title { font-size:13px; font-weight:800; line-height:1.25; }
+.ahead-event-place { font-size:11px; color:var(--ink-muted); margin-top:2px; }
+.ahead-state {
+  border-radius:999px; padding:4px 7px; font-size:8px; font-weight:800; text-transform:uppercase;
+}
+.ahead-state.locked { background:#dcebd7; color:#36533a; }
+.ahead-state.likely { background:#dcecf5; color:#35566b; }
+
+.ahead-decisions-box {
+  margin-top:24px; border:1.5px dashed var(--border); border-radius:18px;
+  padding:16px; background:rgba(242,200,91,.09);
+}
+.ahead-decisions-title { font-family:var(--font-display); font-size:18px; font-weight:800; }
+.ahead-decisions-box p { font-size:12px; color:var(--ink-muted); margin:4px 0 12px; }
+.ahead-decision-item {
+  display:flex; justify-content:space-between; gap:12px; align-items:center;
+  border-top:1px solid var(--border-subtle); padding:9px 0;
+}
+.ahead-decision-item:first-child{border-top:0}
+.ahead-decision-main { font-size:12px; font-weight:700; }
+.ahead-decision-sub { font-size:10px; color:var(--ink-muted); margin-top:2px; }
+.ahead-decision-badge {
+  flex:0 0 auto; border-radius:999px; padding:4px 7px;
+  background:#f8e9bc; color:#745d22; font-size:8px; font-weight:800; text-transform:uppercase;
+}
+
+/* Remove all remnants of the old Vibe UI from the visible app */
+.legacy-vibe-panel { display:none !important; }
+.active-vibe-banner, .vibe-routes-grid, .vibe-top-bar { display:none !important; }
+
+/* Calendar becomes a board-grid */
+.calendar-shell { background:var(--bg-card); }
+.calendar-day {
+  border-color:var(--border-subtle);
+  background:var(--bg-card);
+}
+.calendar-grid { border-color:var(--border); }
+.calendar-weekdays { background:#46645f; border-color:#46645f; }
+.cal-event { border:0; box-shadow:none; border-radius:7px; }
+
+@media(max-width:560px){
+  .ahead-hero{align-items:flex-start}
+  .mini-spinner{width:58px;height:58px}
+  .spinner-center{width:28px;height:28px;font-size:7px}
+  .ahead-event{grid-template-columns:48px 1fr}
+  .ahead-state{grid-column:2; justify-self:start}
+}
+
+
+/* Bottom-only appearance control */
+.topbar { display:none !important; }
+.bottom-theme-control {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:42px 0 8px;
+  padding-top:22px;
+  border-top:1px solid var(--border-subtle);
+}
+.bottom-theme-control .theme-toggle {
+  min-width:112px;
+  background:var(--bg-card);
+}
+
+
+/* =========================================================
+   PLAYFUL BOARD-GAME TYPOGRAPHY OVERRIDE
+   ========================================================= */
+h1.hero-title,
+.home-intro h2,
+.nav-tile-title,
+.section-title,
+.damage-title,
+.vibe-label,
+.ahead-month-name,
+.ahead-decisions-title,
+.event-title,
+.date-group-label,
+.calendar-month-title,
+.add-show-title,
+.next-move-text {
+  font-family: "Chewy", "Baloo 2", cursive !important;
+  font-weight: 400 !important;
+  letter-spacing: .01em !important;
+}
+
+body,
+button,
+input,
+select,
+textarea,
+.event-venue,
+.section-note,
+.nav-tile-sub,
+.ahead-event-title,
+.ahead-event-place,
+.month-analysis-summary,
+.month-analysis-meta,
+.tab,
+.topbar,
+.form-group label {
+  font-family: "Baloo 2", sans-serif !important;
+}
+
+h1.hero-title {
+  font-size: clamp(50px, 10vw, 82px) !important;
+  line-height: .85 !important;
+  transform: rotate(-1deg);
+}
+
+.nav-tile-title,
+.section-title,
+.ahead-month-name {
+  line-height: 1.02 !important;
+}
+
+.event-title {
+  font-size: 21px !important;
+  line-height: 1.08 !important;
+}
+
+.tab,
+.status-select,
+.tag-badge,
+.ahead-state,
+.ahead-decision-badge {
+  font-weight: 800 !important;
+  letter-spacing: .02em !important;
+}
+
+
+/* HERO CLEANUP — centered, simplified */
+.hero {
+  text-align: center !important;
+}
+.hero-inner,
+.hero-content,
+.hero-copy {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  align-items: center !important;
+}
+.hero-brand,
+.hero-logo,
+.hero-title-wrap {
+  justify-content: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.hero-kicker,
+.hero-eyebrow,
+.hero-board-label,
+.hero .eyebrow,
+.hero .kicker {
+  display: none !important;
+}
+.hero-subtitle {
+  display: none !important;
+}
+.hero h1,
+.hero h2,
+.hero p,
+.hero-title,
+.hero-tagline,
+.hero-description {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+.hero-description {
+  max-width: 900px !important;
+}
+
 </style>
 </head>
 <body>
 
 <div class="wrap">
-  <!-- TOPBAR -->
-  <div class="topbar">
-    <span class="stamp">2026 LIFE CALENDAR</span>
-    <div class="controls">
-      <button type="button" class="theme-toggle" id="theme-btn" aria-label="Switch to light mode">☾ DARK</button>
-    </div>
-  </div>
-
   <!-- HERO -->
   <header class="hero">
-    <h1 class="hero-title" id="heroTitle">LIFE</h1>
+    
+    <div class="life-brand-lockup">
+      <div class="life-wheel" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div>
+        <h1 class="hero-title" id="heroTitle">LIFE</h1>
+        <div class="hero-subtitle"></div>
+      </div>
+    </div>
+
   </header>
 
   <!-- STICKY SECTION NAVIGATION -->
   <div class="tabbar-outer" id="sectionNavOuter">
     <div class="tabbar" role="tablist">
-      <button class="tab" data-nav="rest" aria-selected="false">REST OF 2026</button>
-      <button class="tab" data-nav="vibe" aria-selected="false">PICK YOUR VIBE</button>
+      <button class="tab" data-nav="rest" aria-selected="false">WHAT'S NEXT</button>
+      <button class="tab" data-nav="ahead" aria-selected="false">YEAR AHEAD</button>
       <button class="tab" data-nav="year" aria-selected="false">YEAR SO FAR</button>
       <button class="tab" data-nav="calendar" aria-selected="false">CALENDAR</button>
     </div>
@@ -1092,38 +1755,62 @@ h1.hero-title:hover { transform: none; text-shadow: none; color: var(--accent-ma
 
   <!-- LANDING PAGE HOME VIEW -->
   <section class="panel is-active" id="panel-home">
+    <div class="home-intro">
+      <div class="home-eyebrow"></div>
+      <h2>Roll with the plans.<br>Keep room for surprises.</h2>
+      <p>Trips, people, music, beaches, games, family, food and everything in between.</p>
+    </div>
+
+    <div class="life-road" aria-hidden="true">
+      <span class="road-dot dot-a"></span>
+      <span class="road-dot dot-b"></span>
+      <span class="road-dot dot-c"></span>
+      <span class="road-dot dot-d"></span>
+      <span class="road-dot dot-e"></span>
+    </div>
+
     <div class="landing-grid">
       <div class="nav-tile tile-1" data-navtarget="rest">
+        <div class="nav-icon">→</div>
         <div class="nav-tile-content">
-          <h2 class="nav-tile-title">WHAT’S NEXT?</h2>
-          <span class="nav-tile-sub">See the current life plan &amp; make decisions.</span>
+          <h2 class="nav-tile-title">WHAT'S NEXT?</h2>
+          <span class="nav-tile-sub">Upcoming plans, choices and open weekends.</span>
         </div>
-        <span class="nav-tile-arrow">&rarr;</span>
+        <span class="nav-tile-arrow">GO</span>
       </div>
 
-      <div class="nav-tile tile-2" data-navtarget="vibe">
+      <div class="nav-tile tile-2" data-navtarget="ahead">
+        <div class="nav-icon">★</div>
         <div class="nav-tile-content">
-          <h2 class="nav-tile-title">WHAT’S THE VIBE?</h2>
-          <span class="nav-tile-sub">See how different choices shape the year.</span>
+          <h2 class="nav-tile-title">YEAR AHEAD</h2>
+          <span class="nav-tile-sub">Everything selected, month by month.</span>
         </div>
-        <span class="nav-tile-arrow">&rarr;</span>
+        <span class="nav-tile-arrow">GO</span>
       </div>
 
       <div class="nav-tile tile-3" data-navtarget="year">
+        <div class="nav-icon">✓</div>
         <div class="nav-tile-content">
-          <h2 class="nav-tile-title">WHAT’D WE DO?</h2>
-          <span class="nav-tile-sub">Rewind 2026.</span>
+          <h2 class="nav-tile-title">YEAR SO FAR</h2>
+          <span class="nav-tile-sub">The memories already on the board.</span>
         </div>
-        <span class="nav-tile-arrow">&rarr;</span>
+        <span class="nav-tile-arrow">GO</span>
+      </div>
+
+      <div class="nav-tile tile-4" data-navtarget="calendar">
+        <div class="nav-icon">▦</div>
+        <div class="nav-tile-content">
+          <h2 class="nav-tile-title">CALENDAR</h2>
+          <span class="nav-tile-sub">See the whole board at a glance.</span>
+        </div>
+        <span class="nav-tile-arrow">GO</span>
       </div>
     </div>
   </section>
 
   <!-- TAB 1: REST OF 2026 -->
   <section class="panel" id="panel-rest">
-    <div id="activeVibeBannerContainer"></div>
-
-    <h2 class="section-title">WHAT'S LEFT</h2>
+    <h2 class="section-title">WHAT'S NEXT</h2>
     <p class="section-note">Toggle plans below. Your master calendar updates dynamically.</p>
     <div id="restEventsList"></div>
 
@@ -1132,6 +1819,7 @@ h1.hero-title:hover { transform: none; text-shadow: none; color: var(--accent-ma
       <div class="add-show-title" id="addShowFormHeading">+ ADD A PLAN</div>
       <form id="addShowForm">
         <input type="hidden" id="editEventId" value="">
+        <input type="hidden" id="editEventSource" value="">
         <div class="form-grid">
           <div class="form-group full">
             <label for="inputArtist">Event *</label>
@@ -1189,58 +1877,23 @@ h1.hero-title:hover { transform: none; text-shadow: none; color: var(--accent-ma
       <button type="button" class="btn-add-show" id="btnOpenAddShow">+ ADD A PLAN</button>
     </div>
 
-    <!-- ANNUAL VIBE VERDICT -->
+    <!-- REST OF YEAR ANALYSIS -->
     <div class="damage-container" id="damageContainer">
-      <h3 class="damage-title">ANNUAL VIBE VERDICT</h3>
-      <div class="damage-subtitle">SEASONAL PACING &amp; LIFE BALANCE</div>
+      <h3 class="damage-title">THE REST OF 2026</h3>
+      <div class="damage-subtitle">PACING, OPENINGS &amp; DECISIONS THAT ACTUALLY MATTER</div>
 
       <div class="vibe-box">
-        <div class="vibe-kicker">YOUR 2026 LIFE YEAR</div>
+        <div class="vibe-kicker">CALENDAR READ</div>
         <div class="vibe-label" id="vibeTitle"></div>
         <p class="vibe-desc" id="vibeDesc"></p>
       </div>
 
-      <!-- "WHAT THE CALENDAR NEEDS" DECISION GRAPHIC -->
-      <div class="meters-container">
-        <div style="font-family:var(--font-display); font-size:14px; text-transform:uppercase; margin-bottom:12px; border-bottom:2px solid var(--ink); padding-bottom:4px;">
-          WHAT THE CALENDAR NEEDS
-        </div>
+      <div class="year-analysis-grid" id="yearAnalysisGrid"></div>
 
-        <!-- 1. DANCE FLOOR -->
-        <div class="meter-row">
-          <div class="meter-header">
-            <span>People & Celebrations</span>
-            <span class="meter-state-badge" id="meterBadgeDF">BALANCED</span>
-          </div>
-          <div class="meter-bar-track" id="meterTrackDF"></div>
-          <div class="meter-editorial-take" id="meterTakeDF">Friends, family and celebrations are covered.</div>
-          <div class="meter-recommendation" id="meterRecDF"></div>
-        </div>
-
-        <!-- 2. LIVE MUSIC -->
-        <div class="meter-row">
-          <div class="meter-header">
-            <span>Trips & Outdoors</span>
-            <span class="meter-state-badge" id="meterBadgeLM">ROOM FOR MORE</span>
-          </div>
-          <div class="meter-bar-track" id="meterTrackLM"></div>
-          <div class="meter-editorial-take" id="meterTakeLM">Trips, sports and outdoors keep the calendar moving.</div>
-          <div class="meter-recommendation" id="meterRecLM"></div>
-        </div>
-
-        <!-- 3. EXPERIENCE VARIETY -->
-        <div class="meter-row">
-          <div class="meter-header">
-            <span>Culture & Recharge</span>
-            <span class="meter-state-badge" id="meterBadgeEV">BALANCED</span>
-          </div>
-          <div class="meter-bar-track" id="meterTrackEV"></div>
-          <div class="meter-editorial-take" id="meterTakeEV">Culture, music and wellness add variety.</div>
-          <div class="meter-recommendation" id="meterRecEV"></div>
-        </div>
+      <div class="next-move-box">
+        <div class="next-move-kicker">NEXT MOVE</div>
+        <div class="next-move-text" id="finalEditorialLine"></div>
       </div>
-
-      <div class="final-editorial-line" id="finalEditorialLine"></div>
     </div>
   </section>
 
@@ -1256,25 +1909,54 @@ h1.hero-title:hover { transform: none; text-shadow: none; color: var(--accent-ma
     <div id="calendarView"></div>
   </section>
 
-  <!-- TAB 3: PICK YOUR VIBE -->
-  <section class="panel" id="panel-vibe">
-    <div class="vibe-top-bar">
+  <!-- YEAR AHEAD -->
+  <section class="panel" id="panel-ahead">
+    <div class="ahead-hero">
       <div>
-        <h2 class="section-title">PICK YOUR VIBE</h2>
-        <p class="section-note" style="margin-bottom:0;">Curated routes reacting dynamically to your 2026 life calendar.</p>
+        <div class="ahead-kicker">THE ROAD AHEAD</div>
+        <h2 class="section-title">YEAR AHEAD</h2>
+        <p class="section-note">A month-by-month recap of everything you’ve selected — with unresolved choices separated so the plan stays honest.</p>
       </div>
-      <button type="button" class="btn-surprise" id="btnSurpriseMe">⚡ SURPRISE ME</button>
+      <div class="mini-spinner" aria-hidden="true">
+        <div class="spinner-center">2026</div>
+      </div>
     </div>
-    <div class="vibe-routes-grid" id="vibeRoutesGrid"></div>
+
+    <div class="ahead-stats" id="aheadStats"></div>
+
+    <div class="ahead-legend">
+      <span><i class="legend-pill selected"></i> Selected</span>
+      <span><i class="legend-pill likely"></i> Likely</span>
+      <span><i class="legend-pill decision"></i> Still in play</span>
+    </div>
+
+    <div class="year-roadmap" id="yearAheadRoadmap"></div>
+
+    <div class="ahead-decisions-box">
+      <div class="ahead-decisions-title">STILL IN PLAY</div>
+      <p>Choices that are not part of the firm year yet, but are still on the board.</p>
+      <div id="aheadDecisionList"></div>
+    </div>
   </section>
 
-  <!-- TAB 4: YEAR SO FAR -->
+  <!-- HIDDEN LEGACY VIBE PANEL (kept only for backwards-compatible saved data; no navigation points here) -->
+  <section class="panel legacy-vibe-panel" id="panel-vibe" aria-hidden="true">
+    <div id="activeVibeBannerContainer" style="display:none"></div>
+    <div id="vibeRoutesGrid" style="display:none"></div>
+    <button type="button" id="btnSurpriseMe" style="display:none">Hidden</button>
+  </section>
+
+  <!-- YEAR SO FAR -->
   <section class="panel" id="panel-year">
     <h2 class="section-title">YEAR SO FAR</h2>
     <p class="section-note">Life so far — trips, friends, family, culture, sports and music.</p>
     <div class="stats-grid" id="pastStats"></div>
     <div id="pastEventsList"></div>
   </section>
+
+  <footer class="bottom-theme-control">
+    <button type="button" class="theme-toggle" id="theme-btn" aria-label="Switch to light mode">☾ DARK</button>
+  </footer>
 </div>
 
 <script>
@@ -1403,6 +2085,11 @@ var PAST_EVENTS = [
   {m:8,d:22,dEnd:23,artist:"Beach Day / Michele Birthday",venue:"Cedar Beach, LI",price:null,kind:"family",venueType:"beach",venueScale:"open-air",venueCharacter:["family","outdoor","birthday"]}
 ];
 
+// Give every hard-coded past entry a stable editable ID.
+PAST_EVENTS.forEach(function(e, i){
+  if(!e.id) e.id = "past_" + String(i + 1).padStart(3, "0");
+});
+
 /* =========================================================
    STATE ENGINE & STORAGE
    ========================================================= */
@@ -1416,6 +2103,10 @@ var state = {
   channelTresSecond: { bought: false, price: null },
   rampaDate: "",
   customEvents: [],
+  eventOverrides: {},       // built-in upcoming id -> edited fields
+  deletedEventIds: [],      // built-in/custom upcoming ids hidden by user
+  pastOverrides: {},        // past id -> edited fields
+  deletedPastIds: [],       // past ids hidden by user
   forcedSurpriseKey: null,
   lastSurpriseKey: null,
   activeVibeFilter: null // { vibeKey, recommendedIds: [...] }
@@ -1448,6 +2139,10 @@ function loadState(){
       if(parsed.channelTresSecond) state.channelTresSecond = parsed.channelTresSecond;
       if(parsed.rampaDate !== undefined) state.rampaDate = parsed.rampaDate;
       if(parsed.attendance) Object.assign(state.attendance, parsed.attendance);
+      if(parsed.eventOverrides && typeof parsed.eventOverrides === "object") state.eventOverrides = parsed.eventOverrides;
+      if(Array.isArray(parsed.deletedEventIds)) state.deletedEventIds = parsed.deletedEventIds;
+      if(parsed.pastOverrides && typeof parsed.pastOverrides === "object") state.pastOverrides = parsed.pastOverrides;
+      if(Array.isArray(parsed.deletedPastIds)) state.deletedPastIds = parsed.deletedPastIds;
       if(parsed.customEvents && Array.isArray(parsed.customEvents)) {
         var seenKeys = {};
         var cleanedCustom = [];
@@ -1503,18 +2198,29 @@ function inferEventMetadata(e) {
    CALCULATION LOGIC & PACING ENGINE
    ========================================================= */
 function getAllEvents(){
-  var combined = INITIAL_EVENTS.concat(state.customEvents);
-  return combined.map(function(e){
-    var copy = Object.assign({}, e);
-    if(copy.isRampa && state.rampaDate) {
-      var parts = state.rampaDate.split("-");
-      if(parts.length === 3) {
-        copy.m = parseInt(parts[1], 10);
-        copy.d = parseInt(parts[2], 10);
+  var deleted = {};
+  (state.deletedEventIds || []).forEach(function(id){ deleted[id] = true; });
+
+  var builtIns = INITIAL_EVENTS
+    .filter(function(e){ return !deleted[e.id]; })
+    .map(function(e){
+      var copy = Object.assign({}, e, state.eventOverrides[e.id] || {});
+      if(copy.isRampa && state.rampaDate) {
+        var parts = state.rampaDate.split("-");
+        if(parts.length === 3) {
+          copy.m = parseInt(parts[1], 10);
+          copy.d = parseInt(parts[2], 10);
+        }
       }
-    }
-    return copy;
-  });
+      if(!copy.venueType) inferEventMetadata(copy);
+      return copy;
+    });
+
+  var custom = state.customEvents
+    .filter(function(e){ return !deleted[e.id]; })
+    .map(function(e){ return Object.assign({}, e); });
+
+  return builtIns.concat(custom);
 }
 
 function getAttendedExtraEvents() {
@@ -1542,8 +2248,19 @@ function getAttendedExtraEvents() {
 }
 
 function getCombinedPastEvents() {
+  var deleted = {};
+  (state.deletedPastIds || []).forEach(function(id){ deleted[id] = true; });
+
+  var base = PAST_EVENTS
+    .filter(function(e){ return !deleted[e.id]; })
+    .map(function(e){
+      var copy = Object.assign({}, e, state.pastOverrides[e.id] || {});
+      if(!copy.venueType) inferEventMetadata(copy);
+      return copy;
+    });
+
   var extra = getAttendedExtraEvents();
-  var allPast = PAST_EVENTS.concat(extra);
+  var allPast = base.concat(extra);
   return allPast.sort(function(a, b){
     if(a.m !== b.m) return a.m - b.m;
     return a.d - b.d;
@@ -1657,26 +2374,298 @@ function computeStatsFromStatuses(){
 }
 
 /* =========================================================
-   "WHAT THE CALENDAR NEEDS" — LIFE BALANCE ANALYSIS
+   REST OF YEAR — USEFUL CALENDAR ANALYSIS
    ========================================================= */
-function getAssumedCalendarEvents(){ return getAllEvents().filter(function(e){ if(e.m&&e.d&&isDatePast(e.m,e.d)) return false; var st=state.status[e.id]||"choosing"; return st==="locked"||st==="likely"; }); }
-function getUnresolvedActionableEvents(){ return getAllEvents().filter(function(e){ if(e.m&&e.d&&isDatePast(e.m,e.d)) return false; var st=state.status[e.id]||"choosing"; return st==="choosing"||st==="gametime"; }); }
-function countKinds(list,kinds){ return list.filter(function(e){ return kinds.indexOf(e.kind)>=0; }).length; }
-function lifeMeter(count,target,label){ var sat=Math.min(100,Math.round(count/target*100)); var stateName="BALANCED",cssClass="state-balanced"; if(sat>=120){stateName="COVERED";cssClass="state-covered";} else if(sat<45){stateName="ROOM FOR MORE";cssClass="state-room-more";} return {saturation:Math.min(100,sat),stateName:stateName,cssClass:cssClass,take:label,rec:""}; }
-function computeDamageAndVibe(){
-  var upcoming=getAssumedCalendarEvents();
-  var connection=countKinds(upcoming,["social","family","wedding","holiday"]);
-  var adventure=countKinds(upcoming,["trip","outdoors","sports"]);
-  var culture=countKinds(upcoming,["music","culture","wellness"]);
+function getRelevantUpcomingEvents(){
+  return getAllEvents().filter(function(e){
+    if(e.m && e.d && isDatePast(e.m, e.d)) return false;
+    var st = state.status[e.id] || e.def || "choosing";
+    return st !== "skip";
+  });
+}
 
-  var vibe={title:"FULL, BUT NOT ALL TICKETS",desc:"The calendar now mixes friends, family, trips, sports, beaches, culture, wellness and music. The goal is protecting variety and leaving open weekends — not filling every blank."};
+function getMonthName(m){
+  return ["","JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"][m] || "";
+}
+
+function getWeekendOpeningsForMonth(m, events){
+  var occupied = {};
+  events.forEach(function(e){
+    if(e.m === m && e.d) occupied[e.d] = true;
+  });
+
+  var year = 2026;
+  var daysInMonth = new Date(year, m, 0).getDate();
+  var openings = [];
+
+  for(var d = 1; d <= daysInMonth; d++){
+    var dt = new Date(year, m - 1, d);
+    var day = dt.getDay();
+    if(day !== 0 && day !== 6) continue;
+    if(isDatePast(m, d)) continue;
+
+    // Treat Sat/Sun pair as one weekend. Only count on Saturday, or Sunday if month begins Sunday.
+    if(day === 0 && d > 1) continue;
+
+    var sat = day === 6 ? d : null;
+    var sun = day === 0 ? d : (d + 1 <= daysInMonth ? d + 1 : null);
+    var hasSat = sat && occupied[sat];
+    var hasSun = sun && occupied[sun];
+
+    if(!hasSat && !hasSun){
+      openings.push({sat:sat, sun:sun});
+    }
+  }
+  return openings;
+}
+
+function monthLoadLabel(count){
+  if(count >= 6) return {label:"PACKED", css:"packed"};
+  if(count >= 4) return {label:"ACTIVE", css:"active"};
+  if(count >= 2) return {label:"ROOM TO PLAY", css:"open"};
+  return {label:"LIGHT", css:"light"};
+}
+
+function summarizeMonth(m, monthEvents, openings, decisionCount){
+  var month = getMonthName(m);
+  var count = monthEvents.length;
+
+  if(count >= 6){
+    return month + " already has enough going on. Protect the open weekends instead of automatically adding another plan.";
+  }
+  if(count >= 4){
+    return month + " is active but still breathable. New plans should feel meaningfully different from what's already there.";
+  }
+  if(count >= 2){
+    return month + " has room to play. There is space for one good addition without making the month feel crowded.";
+  }
+  if(count === 1){
+    return month + " is intentionally light. Keep it that way unless something genuinely worth leaving the house for appears.";
+  }
+  return month + " is wide open right now.";
+}
+
+function computeRestOfYearAnalysis(){
+  var events = getRelevantUpcomingEvents();
+  var months = [8,9,10,11,12].filter(function(m){
+    return m >= (CURRENT_DATE.getMonth() + 1);
+  });
+
+  var monthData = months.map(function(m){
+    var monthEvents = events.filter(function(e){ return e.m === m; })
+      .sort(function(a,b){ return (a.d||99) - (b.d||99); });
+
+    var decisions = monthEvents.filter(function(e){
+      var st = state.status[e.id] || e.def || "choosing";
+      return st === "choosing" || st === "gametime";
+    }).length;
+
+    var openings = getWeekendOpeningsForMonth(m, events);
+    var load = monthLoadLabel(monthEvents.length);
+
+    return {
+      m:m,
+      name:getMonthName(m),
+      events:monthEvents,
+      decisions:decisions,
+      openings:openings,
+      load:load,
+      summary:summarizeMonth(m, monthEvents, openings, decisions)
+    };
+  });
+
+  var totalEvents = events.length;
+  var unresolved = events.filter(function(e){
+    var st = state.status[e.id] || e.def || "choosing";
+    return st === "choosing" || st === "gametime";
+  });
+
+  var packedMonths = monthData.filter(function(x){ return x.load.label === "PACKED"; });
+  var openMonths = monthData.filter(function(x){ return x.load.label === "ROOM TO PLAY" || x.load.label === "LIGHT"; });
+
+  var vibeTitle = "THE BOARD IS ALREADY MOVING";
+  var vibeDesc = "The rest of 2026 already has structure. The useful question is no longer “what can we add?” — it’s where there is real breathing room, and which TBDs are actually worth turning into plans.";
+
+  if(packedMonths.length >= 2){
+    vibeTitle = "BUSY STRETCHES, REAL OPENINGS";
+  } else if(openMonths.length >= 3){
+    vibeTitle = "ROOM TO PLAY";
+  }
+
+  // Find the cleanest upcoming weekend opening.
+  var bestOpening = null;
+  monthData.forEach(function(md){
+    if(!bestOpening && md.openings.length){
+      bestOpening = {month:md.name, opening:md.openings[0]};
+    }
+  });
+
+  var editorial = "";
+  if(packedMonths.length){
+    editorial += "DON'T ADD MORE TO " + packedMonths.map(function(x){return x.name;}).join(" / ") + ". ";
+  }
+  if(bestOpening){
+    var o = bestOpening.opening;
+    var dateText = o.sat ? (bestOpening.month + " " + o.sat) : (bestOpening.month + " " + o.sun);
+    editorial += "CLEANEST OPENING: " + dateText + ". ";
+  }
+  if(unresolved.length){
+    editorial += "FOCUS ON RESOLVING " + unresolved.length + " EXISTING TBD" + (unresolved.length === 1 ? "" : "S") + " BEFORE ADDING NEW ONES.";
+  } else {
+    editorial += "THE CALENDAR IS SET — ONLY ADD SOMETHING THAT FEELS DISTINCT.";
+  }
+
   return {
-    vibe:vibe,
-    df:lifeMeter(connection,6,"Friends, family and celebrations are well represented."),
-    lm:lifeMeter(adventure,6,"Trips, outdoors and sports keep the year moving beyond nightlife."),
-    ev:lifeMeter(culture,6,"Music, culture and wellness add texture without taking over the calendar."),
-    editorialLine: "THE MIX IS STRONG. ADD ONLY WHAT FEELS DISTINCT OR GENUINELY WORTH THE TIME."
+    title:vibeTitle,
+    desc:vibeDesc,
+    months:monthData,
+    editorial:editorial
   };
+}
+
+
+/* =========================================================
+   YEAR AHEAD — SELECTED PLAN RECAP
+   ========================================================= */
+function getYearAheadData(){
+  var all = getAllEvents().filter(function(e){
+    if(!e.m || !e.d) return false;
+    if(isDatePast(e.m, e.d)) return false;
+    if(e.ashleyOnly) return true; // still part of the shared life calendar
+    return true;
+  });
+
+  var selected = [];
+  var decisions = [];
+
+  all.forEach(function(e){
+    var st = state.status[e.id] || e.def || "choosing";
+    if(st === "locked" || st === "likely"){
+      selected.push({event:e, status:st});
+    } else if(st === "choosing" || st === "gametime"){
+      decisions.push({event:e, status:st});
+    }
+  });
+
+  selected.sort(function(a,b){
+    if(a.event.m !== b.event.m) return a.event.m - b.event.m;
+    return a.event.d - b.event.d;
+  });
+  decisions.sort(function(a,b){
+    if(a.event.m !== b.event.m) return a.event.m - b.event.m;
+    return a.event.d - b.event.d;
+  });
+
+  return {selected:selected, decisions:decisions};
+}
+
+function getEventCategoryLabel(e){
+  var k = normalizeKind(e.kind);
+  var map = {
+    music:"Music",
+    social:"Social",
+    family:"Family",
+    trip:"Travel",
+    outdoors:"Outdoors",
+    culture:"Culture",
+    sports:"Sports",
+    wellness:"Wellness",
+    wedding:"Celebration",
+    holiday:"Holiday"
+  };
+  return map[k] || "Plan";
+}
+
+function renderYearAheadTab(){
+  var statsEl = document.getElementById("aheadStats");
+  var roadmapEl = document.getElementById("yearAheadRoadmap");
+  var decisionsEl = document.getElementById("aheadDecisionList");
+  if(!statsEl || !roadmapEl || !decisionsEl) return;
+
+  var data = getYearAheadData();
+  var selected = data.selected;
+  var decisions = data.decisions;
+
+  var selectedMonths = {};
+  var categories = {};
+  var trips = 0;
+
+  selected.forEach(function(item){
+    selectedMonths[item.event.m] = true;
+    var cat = getEventCategoryLabel(item.event);
+    categories[cat] = (categories[cat] || 0) + 1;
+    if(normalizeKind(item.event.kind) === "trip") trips++;
+  });
+
+  var biggestCat = "Mixed";
+  var biggestCount = 0;
+  Object.keys(categories).forEach(function(k){
+    if(categories[k] > biggestCount){ biggestCat = k; biggestCount = categories[k]; }
+  });
+
+  statsEl.innerHTML = `
+    <div class="ahead-stat"><div class="num">${selected.length}</div><div class="lab">Selected Plans</div></div>
+    <div class="ahead-stat"><div class="num">${Object.keys(selectedMonths).length}</div><div class="lab">Months In Motion</div></div>
+    <div class="ahead-stat"><div class="num">${decisions.length}</div><div class="lab">Still In Play</div></div>
+    <div class="ahead-stat"><div class="num">${trips}</div><div class="lab">Trips / Getaways</div></div>
+  `;
+
+  var byMonth = {};
+  selected.forEach(function(item){
+    var m = item.event.m;
+    if(!byMonth[m]) byMonth[m] = [];
+    byMonth[m].push(item);
+  });
+
+  var colors = ["#59b7ad","#f2c85b","#e77f79","#6ea6d9","#83b879","#d78aaa","#9b8fc2"];
+  var monthNums = Object.keys(byMonth).map(Number).sort(function(a,b){return a-b;});
+
+  if(!monthNums.length){
+    roadmapEl.innerHTML = `<div class="ahead-month"><div class="ahead-month-name">Nothing selected yet</div><p class="section-note">Lock or mark a plan Likely Yes and it will appear here.</p></div>`;
+  } else {
+    roadmapEl.innerHTML = monthNums.map(function(m, idx){
+      var items = byMonth[m];
+      return `
+        <section class="ahead-month" style="--month-color:${colors[idx % colors.length]}">
+          <div class="ahead-month-header">
+            <div class="ahead-month-name">${getMonthName(m)}</div>
+            <div class="ahead-month-count">${items.length} SELECTED</div>
+          </div>
+          ${items.map(function(item){
+            var e = item.event;
+            return `
+              <div class="ahead-event">
+                <div class="ahead-event-date">${m}/${e.d}</div>
+                <div>
+                  <div class="ahead-event-title">${escapeHtml(e.artist || "TBD")}</div>
+                  <div class="ahead-event-place">${escapeHtml(e.venue || "")} · ${getEventCategoryLabel(e)}</div>
+                </div>
+                <span class="ahead-state ${item.status}">${item.status === "locked" ? "Selected" : "Likely"}</span>
+              </div>
+            `;
+          }).join("")}
+        </section>
+      `;
+    }).join("");
+  }
+
+  if(!decisions.length){
+    decisionsEl.innerHTML = `<div class="ahead-decision-item"><div><div class="ahead-decision-main">No unresolved choices</div><div class="ahead-decision-sub">Everything currently on the board is either selected or removed.</div></div></div>`;
+  } else {
+    decisionsEl.innerHTML = decisions.map(function(item){
+      var e = item.event;
+      var label = item.status === "gametime" ? "Game Time" : "Choosing";
+      return `
+        <div class="ahead-decision-item">
+          <div>
+            <div class="ahead-decision-main">${e.m}/${e.d} · ${escapeHtml(e.artist || "TBD")}</div>
+            <div class="ahead-decision-sub">${escapeHtml(e.venue || "")} · ${getEventCategoryLabel(e)}</div>
+          </div>
+          <span class="ahead-decision-badge">${label}</span>
+        </div>
+      `;
+    }).join("");
+  }
 }
 
 /* =========================================================
@@ -1695,7 +2684,6 @@ function renderTheme(){
 }
 
 function renderRestTab(){
-  renderActiveVibeBanner();
 
   var evs = getAllEvents();
   var mapped = getGroupedEventsMap(evs);
@@ -1842,13 +2830,11 @@ function renderSingleEventCard(e){
       </div>
 
       ${e.isRampa ? renderRampaControls() : ''}
-      ${e.isCustom ? `
-        <div class="custom-card-controls">
-          <button type="button" class="btn-text-action btn-edit-custom" data-id="${e.id}">Edit Show</button>
-          <span>&bull;</span>
-          <button type="button" class="btn-text-action btn-delete-custom" data-id="${e.id}">Remove</button>
-        </div>
-      ` : ''}
+      <div class="custom-card-controls">
+        <button type="button" class="btn-text-action btn-edit-entry" data-id="${e.id}" data-source="${e.isCustom ? 'custom' : 'builtin'}">Edit</button>
+        <span>&bull;</span>
+        <button type="button" class="btn-text-action btn-delete-entry" data-id="${e.id}" data-source="${e.isCustom ? 'custom' : 'builtin'}">Remove</button>
+      </div>
     </div>
   `;
 }
@@ -2081,7 +3067,8 @@ function renderPickYourVibeTab() {
 /* =========================================================
    SURPRISE ME FUNCTIONALITY
    ========================================================= */
-document.getElementById("btnSurpriseMe").addEventListener("click", function(){
+var legacySurpriseBtn = document.getElementById("btnSurpriseMe");
+if(legacySurpriseBtn) legacySurpriseBtn.addEventListener("click", function(){
   var btn = document.getElementById("btnSurpriseMe");
   if(btn.dataset.deciding === "true") return;
   btn.dataset.deciding = "true";
@@ -2263,6 +3250,11 @@ function renderYearSoFarTab(){
               </div>
             </div>
           </div>
+          ${p.id ? `<div class="custom-card-controls">
+            <button type="button" class="btn-text-action btn-edit-past" data-id="${p.id}">Edit</button>
+            <span>&bull;</span>
+            <button type="button" class="btn-text-action btn-delete-past" data-id="${p.id}">Remove</button>
+          </div>` : ''}
         </div>
       `;
     } else {
@@ -2277,6 +3269,11 @@ function renderYearSoFarTab(){
 
           </div>
           ${p.note ? `<div style="font-family:var(--font-mono); font-size:11px; color:var(--ink-muted); margin-top:4px;">"${p.note}"</div>` : ''}
+          ${p.id ? `<div class="custom-card-controls">
+            <button type="button" class="btn-text-action btn-edit-past" data-id="${p.id}">Edit</button>
+            <span>&bull;</span>
+            <button type="button" class="btn-text-action btn-delete-past" data-id="${p.id}">Remove</button>
+          </div>` : ''}
         </div>
       `;
     }
@@ -2284,48 +3281,48 @@ function renderYearSoFarTab(){
   document.getElementById("pastEventsList").innerHTML = html;
 }
 
-function renderMeterTrack(containerId, saturationPct, blockClass) {
-  var el = document.getElementById(containerId);
-  var filledCount = Math.round((saturationPct / 100) * 10);
-  var blocksHtml = "";
-  for(var i = 0; i < 10; i++) {
-    var isFilled = i < filledCount;
-    blocksHtml += `<div class="meter-block ${isFilled ? blockClass : ''}"></div>`;
-  }
-  el.innerHTML = blocksHtml;
-}
-
 function renderDamageSection(){
-  var data = computeDamageAndVibe();
+  var data = computeRestOfYearAnalysis();
 
-  document.getElementById("vibeTitle").textContent = data.vibe.title;
-  document.getElementById("vibeDesc").textContent = data.vibe.desc;
+  document.getElementById("vibeTitle").textContent = data.title;
+  document.getElementById("vibeDesc").textContent = data.desc;
 
-  // 1. Dance Floor Meter
-  var badgeDF = document.getElementById("meterBadgeDF");
-  badgeDF.textContent = data.df.stateName;
-  badgeDF.className = "meter-state-badge " + data.df.cssClass;
-  renderMeterTrack("meterTrackDF", data.df.saturation, "filled-df");
-  document.getElementById("meterTakeDF").textContent = data.df.take;
-  document.getElementById("meterRecDF").textContent = data.df.rec;
+  var grid = document.getElementById("yearAnalysisGrid");
+  grid.innerHTML = data.months.map(function(md){
+    var chips = md.events.slice(0,5).map(function(e){
+      return `<span class="month-analysis-chip">${escapeHtml(e.artist || "TBD")}</span>`;
+    }).join("");
 
-  // 2. Live Music Meter
-  var badgeLM = document.getElementById("meterBadgeLM");
-  badgeLM.textContent = data.lm.stateName;
-  badgeLM.className = "meter-state-badge " + data.lm.cssClass;
-  renderMeterTrack("meterTrackLM", data.lm.saturation, "filled-lm");
-  document.getElementById("meterTakeLM").textContent = data.lm.take;
-  document.getElementById("meterRecLM").textContent = data.lm.rec;
+    if(md.events.length > 5){
+      chips += `<span class="month-analysis-chip">+${md.events.length - 5} more</span>`;
+    }
 
-  // 3. Experience Variety Meter
-  var badgeEV = document.getElementById("meterBadgeEV");
-  badgeEV.textContent = data.ev.stateName;
-  badgeEV.className = "meter-state-badge " + data.ev.cssClass;
-  renderMeterTrack("meterTrackEV", data.ev.saturation, "filled-ev");
-  document.getElementById("meterTakeEV").textContent = data.ev.take;
-  document.getElementById("meterRecEV").textContent = data.ev.rec;
+    var openingText = md.openings.length
+      ? md.openings.length + " open weekend" + (md.openings.length === 1 ? "" : "s")
+      : "no fully open weekends";
 
-  document.getElementById("finalEditorialLine").textContent = data.editorialLine;
+    var decisionText = md.decisions
+      ? md.decisions + " decision" + (md.decisions === 1 ? "" : "s") + " unresolved"
+      : "no major decisions";
+
+    return `
+      <div class="month-analysis-card">
+        <div class="month-analysis-top">
+          <div class="month-analysis-name">${md.name}</div>
+          <span class="month-analysis-badge ${md.load.css}">${md.load.label}</span>
+        </div>
+        <div class="month-analysis-summary">${escapeHtml(md.summary)}</div>
+        <div class="month-analysis-events">${chips || '<span class="month-analysis-chip">No plans yet</span>'}</div>
+        <div class="month-analysis-meta">
+          <span>${md.events.length} plan${md.events.length === 1 ? "" : "s"}</span>
+          <span>${openingText}</span>
+          <span>${decisionText}</span>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  document.getElementById("finalEditorialLine").textContent = data.editorial;
 }
 
 
@@ -2459,14 +3456,14 @@ function renderAll(){
   renderTheme();
   renderRestTab();
   renderCalendarTab();
-  renderPickYourVibeTab();
+  renderYearAheadTab();
   renderYearSoFarTab();
 }
 
 /* =========================================================
    ADD A SHOW & EDIT FUNCTIONALITY
    ========================================================= */
-function openAddShowCard(editId) {
+function openAddShowCard(editId, sourceType) {
   var card = document.getElementById("addShowCard");
   var form = document.getElementById("addShowForm");
   var heading = document.getElementById("addShowFormHeading");
@@ -2475,20 +3472,34 @@ function openAddShowCard(editId) {
   form.reset();
   inlineMsg.classList.remove("is-visible");
   document.getElementById("editEventId").value = "";
+  document.getElementById("editEventSource").value = "";
   document.getElementById("btnSaveShow").disabled = false;
 
   if(editId) {
-    var existing = state.customEvents.find(function(x){ return x.id === editId; });
+    var existing = null;
+    var source = sourceType || "custom";
+
+    if(source === "past") {
+      var basePast = PAST_EVENTS.find(function(x){ return x.id === editId; });
+      if(basePast) existing = Object.assign({}, basePast, state.pastOverrides[editId] || {});
+    } else if(source === "builtin") {
+      var baseBuilt = INITIAL_EVENTS.find(function(x){ return x.id === editId; });
+      if(baseBuilt) existing = Object.assign({}, baseBuilt, state.eventOverrides[editId] || {});
+    } else {
+      existing = state.customEvents.find(function(x){ return x.id === editId; });
+    }
+
     if(existing) {
-      heading.textContent = "EDIT PLAN";
+      heading.textContent = source === "past" ? "EDIT PAST ENTRY" : "EDIT PLAN";
       document.getElementById("editEventId").value = existing.id;
-      document.getElementById("inputArtist").value = existing.artist;
-      document.getElementById("inputVenue").value = existing.venue;
-      document.getElementById("inputPrice").value = existing.price !== null ? existing.price : "";
+      document.getElementById("editEventSource").value = source;
+      document.getElementById("inputArtist").value = existing.artist || "";
+      document.getElementById("inputVenue").value = existing.venue || "";
+      document.getElementById("inputPrice").value = existing.price !== null && existing.price !== undefined ? existing.price : "";
       document.getElementById("inputType").value = existing.kind || "social";
-      document.getElementById("inputStatus").value = state.status[existing.id] || "choosing";
-      document.getElementById("inputCtx").value = existing.ctx || "";
-      
+      document.getElementById("inputStatus").value = state.status[existing.id] || existing.def || "choosing";
+      document.getElementById("inputCtx").value = existing.ctx || existing.note || "";
+
       if(existing.m && existing.d) {
         var mm = String(existing.m).padStart(2, '0');
         var dd = String(existing.d).padStart(2, '0');
@@ -2528,6 +3539,7 @@ document.getElementById("addShowForm").addEventListener("submit", function(ev){
   inlineMsg.classList.remove("is-visible");
 
   var editId = document.getElementById("editEventId").value;
+  var editSource = document.getElementById("editEventSource").value;
   var artist = document.getElementById("inputArtist").value.trim();
   var dateStr = document.getElementById("inputDate").value;
   var venue = document.getElementById("inputVenue").value.trim();
@@ -2569,17 +3581,29 @@ document.getElementById("addShowForm").addEventListener("submit", function(ev){
   }
 
   if(editId) {
-    var existingIdx = state.customEvents.findIndex(function(x){ return x.id === editId; });
-    if(existingIdx !== -1) {
-      state.customEvents[existingIdx].artist = artist;
-      state.customEvents[existingIdx].m = m;
-      state.customEvents[existingIdx].d = d;
-      state.customEvents[existingIdx].venue = venue;
-      state.customEvents[existingIdx].price = priceVal;
-      state.customEvents[existingIdx].kind = kind;
-      state.customEvents[existingIdx].ctx = ctx;
-      inferEventMetadata(state.customEvents[existingIdx]);
+    var updateFields = {
+      artist: artist,
+      m: m,
+      d: d,
+      venue: venue,
+      price: priceVal,
+      kind: kind,
+      ctx: ctx
+    };
+    inferEventMetadata(updateFields);
+
+    if(editSource === "builtin") {
+      state.eventOverrides[editId] = Object.assign({}, state.eventOverrides[editId] || {}, updateFields);
       state.status[editId] = defaultStatus;
+    } else if(editSource === "past") {
+      state.pastOverrides[editId] = Object.assign({}, state.pastOverrides[editId] || {}, updateFields, {note: ctx});
+    } else {
+      var existingIdx = state.customEvents.findIndex(function(x){ return x.id === editId; });
+      if(existingIdx !== -1) {
+        Object.assign(state.customEvents[existingIdx], updateFields);
+        inferEventMetadata(state.customEvents[existingIdx]);
+        state.status[editId] = defaultStatus;
+      }
     }
   } else {
     var newId = "custom_" + Date.now();
@@ -2639,9 +3663,6 @@ document.getElementById("theme-btn").addEventListener("click", function(){
 });
 
 document.getElementById("heroTitle").addEventListener("click", function(){
-  state.activeVibeFilter = null;
-  saveState();
-  renderRestTab();
   switchSection("home");
 });
 
@@ -2726,16 +3747,42 @@ document.addEventListener("click", function(ev){
     }
   }
 
-  if(ev.target.classList.contains("btn-edit-custom")) {
-    var editId = ev.target.dataset.id;
-    openAddShowCard(editId);
+  if(ev.target.classList.contains("btn-edit-entry")) {
+    openAddShowCard(ev.target.dataset.id, ev.target.dataset.source || "builtin");
   }
 
-  if(ev.target.classList.contains("btn-delete-custom")) {
+  if(ev.target.classList.contains("btn-delete-entry")) {
     var delId = ev.target.dataset.id;
-    state.customEvents = state.customEvents.filter(function(x){ return x.id !== delId; });
+    var source = ev.target.dataset.source || "builtin";
+
+    if(source === "custom") {
+      state.customEvents = state.customEvents.filter(function(x){ return x.id !== delId; });
+    } else {
+      if(state.deletedEventIds.indexOf(delId) === -1) state.deletedEventIds.push(delId);
+      delete state.eventOverrides[delId];
+    }
     delete state.status[delId];
     delete state.attendance[delId];
+
+    // If this was the active option in a decision group, clear the active tab.
+    Object.keys(state.activeGroupTab).forEach(function(groupId){
+      if(state.activeGroupTab[groupId] === delId) delete state.activeGroupTab[groupId];
+    });
+
+    saveState();
+    renderAll();
+  }
+});
+
+document.getElementById("pastEventsList").addEventListener("click", function(ev){
+  if(ev.target.classList.contains("btn-edit-past")) {
+    openAddShowCard(ev.target.dataset.id, "past");
+  }
+
+  if(ev.target.classList.contains("btn-delete-past")) {
+    var id = ev.target.dataset.id;
+    if(state.deletedPastIds.indexOf(id) === -1) state.deletedPastIds.push(id);
+    delete state.pastOverrides[id];
     saveState();
     renderAll();
   }
